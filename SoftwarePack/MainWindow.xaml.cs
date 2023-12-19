@@ -244,12 +244,11 @@ namespace SoftwarePack
             try
             {
                 if (!InitProductInfo(out string productInfo))
-                {
                     return;
-                }
-
                 // 写入到脚本中
                 File.WriteAllText(rootDirPath + @"SoftSetupCore\SetupScripts\runtime\setup.nsi", productInfo, Encoding.Unicode);
+                //copy fw to runtime folder
+                File.Copy(fwFile.Text, rootDirPath + @"SoftSetupCore\SetupScripts\runtime\" + Path.GetFileName(fwFile.Text), true);
 
                 if (IsCompleteCompressor)
                 {
@@ -354,10 +353,10 @@ namespace SoftwarePack
                 return false;
             }
 
-            //FileInfo exeInfo = new FileInfo(txtMainSoftPath.Text);
-            //string mainEXEName = exeInfo.Name.Split('.')[0];
             string mainEXEName = Path.GetFileNameWithoutExtension(txtMainSoftPath.Text);
             var dirInfo = new DirectoryInfo(Path.GetDirectoryName(txtMainSoftPath.Text));
+            string fwVersion = this.fwVersion.Text;
+            string fwFileName = Path.GetFileName(this.fwFile.Text);
             
             productInfoData = $"# ====================== 自定义宏 产品信息==============================" +
                               $"\r\n!define PRODUCT_NAME                \"{softName}\"" +
@@ -369,6 +368,8 @@ namespace SoftwarePack
                               $"\r\n!define PRODUCT_PUBLISHER           \"Zeke\"" +
                               $"\r\n!define PRODUCT_LEGAL               \"Zeke Copyright（c）2021\"" +
                               $"\r\n!define INSTALL_OUTPUT_NAME         \"{softName}_Setup_{softVersion}.exe\"" +
+                              $"\r\n!define DEPEND_FRAMEWORK_VERSION    \"{fwVersion}\"" +
+                              $"\r\n!define DEPEND_FRAMEWORK_FILE       \"{fwFileName}\"" +
                               "\r\n# ====================== 自定义宏 安装信息==============================" +
                               "\r\n!define INSTALL_7Z_PATH             \"..\\app.7z\"" +
                               "\r\n!define INSTALL_7Z_NAME             \"app.7z\"" +
