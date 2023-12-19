@@ -361,11 +361,21 @@ namespace SoftwarePack
                     return false;
                 }                
             }
+            if(this.WriteRegistry.IsChecked == true)
+            {
+                if (string.IsNullOrWhiteSpace(this.txtSoftAlias.Text))
+                {
+                    MessageBoxX.Show("请输入应用程序别名", "提示", Application.Current.MainWindow, MessageBoxButton.OK);
+                    return false;
+                }
+            }
 
             string mainEXEName = Path.GetFileNameWithoutExtension(txtMainSoftPath.Text);
             var dirInfo = new DirectoryInfo(Path.GetDirectoryName(txtMainSoftPath.Text));
             string fwVersion = string.Empty;
             string fwFileName = string.Empty;
+            string alias = string.Empty;
+            string writeRegistry = "false";
             string incluedDepend = "false";
             if (this.IncludDepend.IsChecked == true)
             {
@@ -373,9 +383,16 @@ namespace SoftwarePack
                 fwFileName = Path.GetFileName(this.fwFile.Text);
                 incluedDepend = "true";
             }
+            if(this.WriteRegistry.IsChecked == true)
+            {
+                alias = this.txtSoftAlias.Text;
+                writeRegistry = "true";
+            }
             
             productInfoData = $"# ====================== 自定义宏 产品信息==============================" +
                               $"\r\n!define PRODUCT_NAME                \"{softName}\"" +
+                              $"\r\n!define WRITE_REGISTRY              \"{writeRegistry}\" # 是否写入注册表True：注册表记录安装位置及版本号 备注：注册表记录的是产品别名" +
+                              $"\r\n!define PRODUCT_NAME_ALIAS          \"{alias}\"" +
                               $"\r\n!define PRODUCT_PATHNAME            \"{mainEXEName}\"  #安装卸载项用到的KEY" +
                               $"\r\n!define INSTALL_APPEND_PATH         \"{dirInfo.Name}\"	  #安装路径追加的名称 " +
                               $"\r\n!define INSTALL_DEFALT_SETUPPATH    \"\"       #默认生成的安装路径  " +

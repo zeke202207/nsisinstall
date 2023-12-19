@@ -22,16 +22,28 @@
         <!--产品信息填写-->
         <Grid x:Name="step1" Grid.Row="1" Visibility="Visible">
 
-            <Label Content="软件名称：" HorizontalAlignment="Left" Margin="62,45,0,0" VerticalAlignment="Top" Height="25" Width="70"/>
-            <TextBox HorizontalAlignment="Left" x:Name="txtSoftName" Width="250" Height="30" Foreground="Black" VerticalContentAlignment="Center" Margin="132,45,0,388"
+            <Label Content="软件名称：" HorizontalAlignment="Left" Margin="62,11,0,0" VerticalAlignment="Top" Height="25" Width="70"/>
+            <TextBox HorizontalAlignment="Left" x:Name="txtSoftName" Width="250" Height="30" Foreground="Black" VerticalContentAlignment="Center" Margin="132,11,0,422"
                      pu:TextBoxHelper.Watermark="请输入软件名称"
                      pu:TextBoxHelper.FocusedBorderBrush="#00FFE2"
                      pu:TextBoxHelper.FocusedShadowColor="#00FFE2"
                      pu:TextBoxHelper.CornerRadius="6"
                      pu:TextBoxHelper.IsClearButtonVisible="True">
             </TextBox>
-            <Label Content="软件版本：" HorizontalAlignment="Left" Margin="62,99,0,0" VerticalAlignment="Top" Height="25" Width="70"/>
-            <TextBox HorizontalAlignment="Left" FontSize="20" x:Name="txtSoftVersion" Width="250" Height="30" Foreground="Black" VerticalContentAlignment="Center" Margin="132,95,0,338"                     
+
+            <Label Content="软件别名：" HorizontalAlignment="Left" Margin="66,58,0,0" VerticalAlignment="Top" Height="25" Width="70"/>
+            <TextBox HorizontalAlignment="Left" x:Name="txtSoftAlias" Width="174" Height="30" Foreground="Black" VerticalContentAlignment="Center" Margin="133,58,0,375"
+             pu:TextBoxHelper.Watermark="英文名称（简称）"
+             pu:TextBoxHelper.FocusedBorderBrush="#00FFE2"
+             pu:TextBoxHelper.FocusedShadowColor="#00FFE2"
+             pu:TextBoxHelper.CornerRadius="6"
+             pu:TextBoxHelper.IsClearButtonVisible="True">
+            </TextBox>
+            <CheckBox x:Name="WriteRegistry" Margin="312,59,26,376" IsChecked="False">写注册表</CheckBox>
+
+
+            <Label Content="软件版本：" HorizontalAlignment="Left" Margin="62,108,0,0" VerticalAlignment="Top" Height="25" Width="70"/>
+            <TextBox HorizontalAlignment="Left" FontSize="20" x:Name="txtSoftVersion" Width="250" Height="30" Foreground="Black" VerticalContentAlignment="Center" Margin="132,104,0,329"                     
                      pu:TextBoxHelper.Watermark="1.0.0.0"
                      pu:TextBoxHelper.FocusedBorderBrush="#00FFE2"
                      pu:TextBoxHelper.FocusedShadowColor="#00FFE2"
@@ -59,7 +71,7 @@
             <Image x:Name="img_OpenMainSoftPath" Source="images/btn_path_normal.png" Stretch="Fill" HorizontalAlignment="Left" Height="30" Margin="346,201,0,0" VerticalAlignment="Top" Width="36" MouseUp="img_OpenMainSoftPath_MouseUp" />
 
             <CheckBox x:Name="IncludDepend" Margin="135,236,55,184" IsChecked="True">是否包含离线Framework安装包</CheckBox>
-            
+
             <Label Content="Framework版本:" HorizontalAlignment="Left" Margin="27,286,0,0" VerticalAlignment="Top" Height="25" Width="103"/>
             <TextBox x:Name="fwVersion" HorizontalAlignment="Left" FontSize="20" Width="250" Height="30" Foreground="Black" VerticalContentAlignment="Center" Margin="135,284,0,149"                     
                      pu:TextBoxHelper.Watermark="4.7.2"
