@@ -31,7 +31,8 @@
                      pu:TextBoxHelper.IsClearButtonVisible="True">
             </TextBox>
             <Label Content="软件版本：" HorizontalAlignment="Left" Margin="62,99,0,0" VerticalAlignment="Top" Height="25" Width="70"/>
-            <TextBox HorizontalAlignment="Left" Text="1.0.0.0" FontSize="20" x:Name="txtSoftVersion" Width="250" Height="30" Foreground="Black" VerticalContentAlignment="Center" Margin="132,95,0,338"                     
+            <TextBox HorizontalAlignment="Left" FontSize="20" x:Name="txtSoftVersion" Width="250" Height="30" Foreground="Black" VerticalContentAlignment="Center" Margin="132,95,0,338"                     
+                     pu:TextBoxHelper.Watermark="1.0.0.0"
                      pu:TextBoxHelper.FocusedBorderBrush="#00FFE2"
                      pu:TextBoxHelper.FocusedShadowColor="#00FFE2"
                      pu:TextBoxHelper.CornerRadius="6" Cursor="IBeam">
@@ -57,27 +58,30 @@
             </TextBox>
             <Image x:Name="img_OpenMainSoftPath" Source="images/btn_path_normal.png" Stretch="Fill" HorizontalAlignment="Left" Height="30" Margin="346,201,0,0" VerticalAlignment="Top" Width="36" MouseUp="img_OpenMainSoftPath_MouseUp" />
 
-
-            <Label Content="Framework版本:" HorizontalAlignment="Left" Margin="27,252,0,0" VerticalAlignment="Top" Height="25" Width="103"/>
-            <TextBox x:Name="fwVersion" HorizontalAlignment="Left" Text="4.7.2" FontSize="20" Width="250" Height="30" Foreground="Black" VerticalContentAlignment="Center" Margin="135,250,0,183"                     
+            <CheckBox x:Name="IncludDepend" Margin="135,236,55,184" IsChecked="True">是否包含离线Framework安装包</CheckBox>
+            
+            <Label Content="Framework版本:" HorizontalAlignment="Left" Margin="27,286,0,0" VerticalAlignment="Top" Height="25" Width="103"/>
+            <TextBox x:Name="fwVersion" HorizontalAlignment="Left" FontSize="20" Width="250" Height="30" Foreground="Black" VerticalContentAlignment="Center" Margin="135,284,0,149"                     
+                     pu:TextBoxHelper.Watermark="4.7.2"
                      pu:TextBoxHelper.FocusedBorderBrush="#00FFE2"
                      pu:TextBoxHelper.FocusedShadowColor="#00FFE2"
                      pu:TextBoxHelper.CornerRadius="6" Cursor="IBeam">
             </TextBox>
-            <Label Content="Framework文件:" HorizontalAlignment="Left" Margin="27,305,0,0" VerticalAlignment="Top" Height="25" Width="105"/>
-            <TextBox x:Name="fwFile" HorizontalAlignment="Left" Text="D:\ndp472-kb4054530-x86-x64-allos-enu.exe" FontSize="20" Width="250" Height="30" Foreground="Black" VerticalContentAlignment="Center" Margin="135,302,0,131"                     
-                    pu:TextBoxHelper.FocusedBorderBrush="#00FFE2"
+            <Label Content="Framework文件:" HorizontalAlignment="Left" Margin="27,337,0,0" VerticalAlignment="Top" Height="25" Width="105"/>
+            <TextBox x:Name="fwFile" HorizontalAlignment="Left" FontSize="20" Width="250" Height="30" Foreground="Black" VerticalContentAlignment="Center" Margin="135,334,0,99"                     
+                    pu:TextBoxHelper.Watermark="..\ndp472.exe"
+                     pu:TextBoxHelper.FocusedBorderBrush="#00FFE2"
                     pu:TextBoxHelper.FocusedShadowColor="#00FFE2"
                     pu:TextBoxHelper.CornerRadius="6" Cursor="IBeam">
             </TextBox>
 
 
-            <Label Content="图标：" HorizontalAlignment="Left" Margin="90,367,0,0" VerticalAlignment="Top" Height="25" Width="46"/>
-            <Image x:Name="imgSoftIcon" MouseUp="img_form_MouseUp" Source="/images/logo.ico" HorizontalAlignment="Left" Height="36" Margin="153,361,0,0" VerticalAlignment="Top" Width="36"/>
-            <Label Content="卸载图标：" HorizontalAlignment="Left" Margin="237,367,0,0" VerticalAlignment="Top" Height="25" Width="70"/>
-            <Image x:Name="imgSoftUninstIcon" MouseUp="img_form_MouseUp" Source="images/uninst.ico" HorizontalAlignment="Left" Height="36" Margin="312,356,0,0" VerticalAlignment="Top" Width="36"/>
+            <Label Content="图标：" HorizontalAlignment="Left" Margin="90,391,0,0" VerticalAlignment="Top" Height="25" Width="46"/>
+            <Image x:Name="imgSoftIcon" MouseUp="img_form_MouseUp" Source="/images/logo.ico" HorizontalAlignment="Left" Height="36" Margin="153,385,0,0" VerticalAlignment="Top" Width="36"/>
+            <Label Content="卸载图标：" HorizontalAlignment="Left" Margin="237,391,0,0" VerticalAlignment="Top" Height="25" Width="70"/>
+            <Image x:Name="imgSoftUninstIcon" MouseUp="img_form_MouseUp" Source="images/uninst.ico" HorizontalAlignment="Left" Height="36" Margin="312,380,0,0" VerticalAlignment="Top" Width="36"/>
 
-            <Button x:Name="btnNext" Content="下一步" Foreground="White" FontSize="16" HorizontalAlignment="Left" Margin="296,413,0,0" VerticalAlignment="Top" Width="87" Height="27" Click="btnNext_Click" pu:ButtonHelper.ClickStyle="Sink" FontFamily="{StaticResource FontAwesome}" Background="#C800AAFF" pu:ButtonHelper.HoverBrush="#00AAFF" pu:ButtonHelper.CornerRadius="8"/>
+            <Button x:Name="btnNext" Content="下一步" Foreground="White" FontSize="16" HorizontalAlignment="Left" Margin="296,431,0,0" VerticalAlignment="Top" Width="87" Height="27" Click="btnNext_Click" pu:ButtonHelper.ClickStyle="Sink" FontFamily="{StaticResource FontAwesome}" Background="#C800AAFF" pu:ButtonHelper.HoverBrush="#00AAFF" pu:ButtonHelper.CornerRadius="8"/>
 
         </Grid>
 

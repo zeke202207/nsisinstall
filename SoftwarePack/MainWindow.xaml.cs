@@ -26,7 +26,7 @@ namespace SoftwarePack
         /// <summary>
         /// 版本信息
         /// </summary>
-        private string verStr = "© 2021 Zeke MIT license";
+        private string verStr = "© 2021 Zeke";
 
         /// <summary>
         /// 是否压缩完成
@@ -248,7 +248,8 @@ namespace SoftwarePack
                 // 写入到脚本中
                 File.WriteAllText(rootDirPath + @"SoftSetupCore\SetupScripts\runtime\setup.nsi", productInfo, Encoding.Unicode);
                 //copy fw to runtime folder
-                File.Copy(fwFile.Text, rootDirPath + @"SoftSetupCore\SetupScripts\runtime\" + Path.GetFileName(fwFile.Text), true);
+                if (this.IncludDepend.IsChecked == true)
+                    File.Copy(fwFile.Text, rootDirPath + @"SoftSetupCore\SetupScripts\runtime\" + Path.GetFileName(fwFile.Text), true);
 
                 if (IsCompleteCompressor)
                 {
@@ -352,11 +353,26 @@ namespace SoftwarePack
                 MessageBoxX.Show("请选择应用程序主启动程序", "提示", Application.Current.MainWindow, MessageBoxButton.OK);
                 return false;
             }
+            if (this.IncludDepend.IsChecked == true)
+            {
+                if(string.IsNullOrWhiteSpace(this.fwVersion.Text) || string.IsNullOrWhiteSpace(this.fwFile.Text))
+                {
+                    MessageBoxX.Show("请选择依赖的.NET Framework版本和文件", "提示", Application.Current.MainWindow, MessageBoxButton.OK);
+                    return false;
+                }                
+            }
 
             string mainEXEName = Path.GetFileNameWithoutExtension(txtMainSoftPath.Text);
             var dirInfo = new DirectoryInfo(Path.GetDirectoryName(txtMainSoftPath.Text));
-            string fwVersion = this.fwVersion.Text;
-            string fwFileName = Path.GetFileName(this.fwFile.Text);
+            string fwVersion = string.Empty;
+            string fwFileName = string.Empty;
+            string incluedDepend = "false";
+            if (this.IncludDepend.IsChecked == true)
+            {
+                fwVersion = this.fwVersion.Text;
+                fwFileName = Path.GetFileName(this.fwFile.Text);
+                incluedDepend = "true";
+            }
             
             productInfoData = $"# ====================== 自定义宏 产品信息==============================" +
                               $"\r\n!define PRODUCT_NAME                \"{softName}\"" +
@@ -366,8 +382,9 @@ namespace SoftwarePack
                               $"\r\n!define EXE_NAME                    \"{mainEXEName}.exe\"" +
                               $"\r\n!define PRODUCT_VERSION             \"{softVersion}\"  #ProductVersion必须是X.X.X.X" +
                               $"\r\n!define PRODUCT_PUBLISHER           \"Zeke\"" +
-                              $"\r\n!define PRODUCT_LEGAL               \"Zeke Copyright（c）2021\"" +
+                              $"\r\n!define PRODUCT_LEGAL               \"Zeke Copyright（c）2022\"" +
                               $"\r\n!define INSTALL_OUTPUT_NAME         \"{softName}_Setup_{softVersion}.exe\"" +
+                              $"\r\n!define INCLUD_DEPEND               \"{incluedDepend}\"" +
                               $"\r\n!define DEPEND_FRAMEWORK_VERSION    \"{fwVersion}\"" +
                               $"\r\n!define DEPEND_FRAMEWORK_FILE       \"{fwFileName}\"" +
                               "\r\n# ====================== 自定义宏 安装信息==============================" +
