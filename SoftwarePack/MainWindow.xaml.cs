@@ -26,7 +26,7 @@ namespace SoftwarePack
         /// <summary>
         /// 版本信息
         /// </summary>
-        private string verStr = "© 2021 Zeke";
+        private string verStr = "© 2022 Zeke";
 
         /// <summary>
         /// 是否压缩完成
