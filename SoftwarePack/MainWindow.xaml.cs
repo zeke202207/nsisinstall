@@ -327,6 +327,7 @@ namespace SoftwarePack
         private bool InitProductInfo(out string productInfoData)
         {
             string softName = txtSoftName.Text;
+            string installSoftTypeName = softType.Text;
             string softVersion = txtSoftVersion.Text;
 
             productInfoData = string.Empty;
@@ -369,14 +370,6 @@ namespace SoftwarePack
                     return false;
                 }
             }
-            if(this.winService.IsChecked == true)
-            {
-                if (string.IsNullOrWhiteSpace(this.serviceName.Text) || string.IsNullOrWhiteSpace(this.serviceDes.Text))
-                {
-                    MessageBoxX.Show("请输入服务名称和描述", "提示", Application.Current.MainWindow, MessageBoxButton.OK);
-                    return false;
-                }
-            }
 
             string mainEXEName = Path.GetFileNameWithoutExtension(txtMainSoftPath.Text);
             var dirInfo = new DirectoryInfo(Path.GetDirectoryName(txtMainSoftPath.Text));
@@ -386,8 +379,6 @@ namespace SoftwarePack
             string writeRegistry = "false";
             string incluedDepend = "false";
             string isService = "false";
-            string serviceName = string.Empty;
-            string serviceDes = string.Empty;
             if (this.IncludDepend.IsChecked == true)
             {
                 fwVersion = this.fwVersion.Text;
@@ -400,14 +391,11 @@ namespace SoftwarePack
                 writeRegistry = "true";
             }
             if(this.winService.IsChecked == true)
-            {
                 isService = "true";
-                serviceName = this.serviceName.Text;
-                serviceDes = this.serviceDes.Text;
-            }
             
             productInfoData = $"# ====================== 自定义宏 产品信息==============================" +
-                              $"\r\n!define PRODUCT_NAME                \"{softName}\"" +
+                              $"\r\n!define PRODUCT_NAME                \"{softName}({installSoftTypeName})\"" +
+                              $"\r\n!define PRODUCT_INSTALLTYPE_NAME    \"{softName}\"" +
                               $"\r\n!define WRITE_REGISTRY              \"{writeRegistry}\" # 是否写入注册表True：注册表记录安装位置及版本号 备注：注册表记录的是产品别名" +
                               $"\r\n!define PRODUCT_NAME_ALIAS          \"{alias}\"" +
                               $"\r\n!define PRODUCT_PATHNAME            \"{mainEXEName}\"  #安装卸载项用到的KEY" +
@@ -422,8 +410,6 @@ namespace SoftwarePack
                               $"\r\n!define DEPEND_FRAMEWORK_VERSION    \"{fwVersion}\"" +
                               $"\r\n!define DEPEND_FRAMEWORK_FILE       \"{fwFileName}\"" +
                               $"\r\n!define ISSERVICE                   \"{isService}\"" +
-                              $"\r\n!define SERVICENAME                 \"{serviceName}\"" +
-                              $"\r\n!define SERVICEDESCRIPT             \"{serviceDes}\"" +
                               "\r\n# ====================== 自定义宏 安装信息==============================" +
                               "\r\n!define INSTALL_7Z_PATH             \"..\\app.7z\"" +
                               "\r\n!define INSTALL_7Z_NAME             \"app.7z\"" +

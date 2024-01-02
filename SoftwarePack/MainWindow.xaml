@@ -27,73 +27,66 @@
             </Grid.ColumnDefinitions>
 
             <Label Content="软件名称：" HorizontalAlignment="Left" Margin="62,5,0,0" VerticalAlignment="Top" Height="25" Width="70" Grid.ColumnSpan="2"/>
-            <TextBox HorizontalAlignment="Left" x:Name="txtSoftName" Width="250" Height="30" Foreground="Black" VerticalContentAlignment="Center" Margin="16,5,0,428"
+            <StackPanel Orientation="Horizontal" Grid.Column="1" >
+                <TextBox HorizontalAlignment="Left" x:Name="txtSoftName" Width="150" Height="30" Foreground="Black" VerticalContentAlignment="Center" Margin="16,5,0,428"
                      pu:TextBoxHelper.Watermark="请输入软件名称"
                      pu:TextBoxHelper.FocusedBorderBrush="#00FFE2"
                      pu:TextBoxHelper.FocusedShadowColor="#00FFE2"
                      pu:TextBoxHelper.CornerRadius="6"
-                     pu:TextBoxHelper.IsClearButtonVisible="True" Grid.Column="1">
-            </TextBox>
+                     pu:TextBoxHelper.IsClearButtonVisible="True">
+                </TextBox>
+                <TextBox x:Name="softType" Height="30" Width="100" Margin="5,0,0,420" 
+                        pu:TextBoxHelper.Watermark="业务服务器"
+                        pu:TextBoxHelper.FocusedBorderBrush="#00FFE2"
+                        pu:TextBoxHelper.FocusedShadowColor="#00FFE2"
+                        pu:TextBoxHelper.CornerRadius="6"
+                        pu:TextBoxHelper.IsClearButtonVisible="True"/>
+            </StackPanel>
 
-            <Label Content="软件别名：" HorizontalAlignment="Left" Margin="66,40,0,0" VerticalAlignment="Top" Height="25" Width="70" Grid.ColumnSpan="2"/>
-            <TextBox HorizontalAlignment="Left" x:Name="txtSoftAlias" Width="174" Height="30" Foreground="Black" VerticalContentAlignment="Center" Margin="17,40,0,393"
+            <Label Content="软件别名：" HorizontalAlignment="Left" Margin="66,45,0,0" VerticalAlignment="Top" Height="25" Width="70" Grid.ColumnSpan="2"/>
+            <TextBox HorizontalAlignment="Left" x:Name="txtSoftAlias" Width="174" Height="30" Foreground="Black" VerticalContentAlignment="Center" Margin="17,45,0,388"
              pu:TextBoxHelper.Watermark="英文名称（简称）"
              pu:TextBoxHelper.FocusedBorderBrush="#00FFE2"
              pu:TextBoxHelper.FocusedShadowColor="#00FFE2"
              pu:TextBoxHelper.CornerRadius="6"
              pu:TextBoxHelper.IsClearButtonVisible="True" Grid.Column="1">
             </TextBox>
-            <CheckBox x:Name="WriteRegistry" Margin="196,41,26,394" IsChecked="False" Grid.Column="1">写注册表</CheckBox>
+            <CheckBox x:Name="WriteRegistry" Margin="196,46,26,389" IsChecked="False" Grid.Column="1">写注册表</CheckBox>
 
 
-            <Label Content="软件版本：" HorizontalAlignment="Left" Margin="62,78,0,0" VerticalAlignment="Top" Height="25" Width="70" Grid.ColumnSpan="2"/>
-            <TextBox HorizontalAlignment="Left" x:Name="txtSoftVersion" Width="250" Height="30" Foreground="Black" VerticalContentAlignment="Center" Margin="16,74,0,359"                     
+            <Label Content="软件版本：" HorizontalAlignment="Left" Margin="62,93,0,0" VerticalAlignment="Top" Height="25" Width="70" Grid.ColumnSpan="2"/>
+            <TextBox HorizontalAlignment="Left" x:Name="txtSoftVersion" Width="250" Height="30" Foreground="Black" VerticalContentAlignment="Center" Margin="16,89,0,344"                     
                      pu:TextBoxHelper.Watermark="1.0.0.0"
                      pu:TextBoxHelper.FocusedBorderBrush="#00FFE2"
                      pu:TextBoxHelper.FocusedShadowColor="#00FFE2"
                      pu:TextBoxHelper.CornerRadius="6" Cursor="IBeam" Grid.Column="1">
             </TextBox>
 
-            <Label Content="软件路径：" HorizontalAlignment="Left" Margin="62,114,0,0" VerticalAlignment="Top" Height="25" Width="70" Grid.ColumnSpan="2"/>
-            <TextBox HorizontalAlignment="Left" x:Name="txtSoftPath" Width="210" Height="30" Foreground="Black" VerticalContentAlignment="Center" Margin="16,110,0,323"
+            <Label Content="软件路径：" HorizontalAlignment="Left" Margin="55,170,0,0" VerticalAlignment="Top" Height="25" Width="70" Grid.ColumnSpan="2" RenderTransformOrigin="0.471,1.727"/>
+            <TextBox HorizontalAlignment="Left" x:Name="txtSoftPath" Width="210" Height="30" Foreground="Black" VerticalContentAlignment="Center" Margin="17,165,0,268"
                      pu:TextBoxHelper.Watermark="..\产品名称\Client"
                      pu:TextBoxHelper.FocusedBorderBrush="#00FFE2"
                      pu:TextBoxHelper.FocusedShadowColor="#00FFE2"
                      pu:TextBoxHelper.CornerRadius="6"
                      pu:TextBoxHelper.IsClearButtonVisible="True" Grid.Column="1">
             </TextBox>
-            <Image x:Name="img_OpenSoftPath" Source="images/btn_path_normal.png" Stretch="Fill" HorizontalAlignment="Left" Height="30" Margin="231,110,0,0" VerticalAlignment="Top" Width="36" MouseUp="img_btnSoftPath_MouseUp" Grid.Column="1"/>
+            <Image x:Name="img_OpenSoftPath" Source="images/btn_path_normal.png" Stretch="Fill" HorizontalAlignment="Left" Height="30" Margin="237,165,0,0" VerticalAlignment="Top" Width="36" MouseUp="img_btnSoftPath_MouseUp" Grid.Column="1"/>
 
-            <Label Content="主执行程序：" HorizontalAlignment="Left" Margin="51,152,0,0" VerticalAlignment="Top" Height="25" Width="79" Grid.ColumnSpan="2"/>
-            <TextBox HorizontalAlignment="Left" x:Name="txtMainSoftPath" Width="210" Height="30" Foreground="Black" VerticalContentAlignment="Center" Margin="16,148,0,285"
+            <Label Content="主执行程序：" HorizontalAlignment="Left" Margin="46,0,0,0" VerticalAlignment="Center" Height="25" Width="79" Grid.ColumnSpan="2" RenderTransformOrigin="0.532,-0.553"/>
+            <TextBox HorizontalAlignment="Left" x:Name="txtMainSoftPath" Width="210" Height="30" Foreground="Black" VerticalContentAlignment="Center" Margin="17,216,0,217"
                      pu:TextBoxHelper.Watermark="..\产品名称\Clien\My.exe"
                      pu:TextBoxHelper.FocusedBorderBrush="#00FFE2"
                      pu:TextBoxHelper.FocusedShadowColor="#00FFE2"
                      pu:TextBoxHelper.CornerRadius="6"
                      pu:TextBoxHelper.IsClearButtonVisible="True" Grid.Column="1">
             </TextBox>
-            <Image x:Name="img_OpenMainSoftPath" Source="images/btn_path_normal.png" Stretch="Fill" HorizontalAlignment="Left" Height="30" Margin="230,148,0,0" VerticalAlignment="Top" Width="36" MouseUp="img_OpenMainSoftPath_MouseUp" Grid.Column="1" />
+            <Image x:Name="img_OpenMainSoftPath" Source="images/btn_path_normal.png" Stretch="Fill" HorizontalAlignment="Left" Height="30" Margin="237,0,0,0" VerticalAlignment="Center" Width="36" MouseUp="img_OpenMainSoftPath_MouseUp" Grid.Column="1" />
 
-            <CheckBox x:Name="winService" Margin="19,181,38,257" IsChecked="False" Grid.Column="1">Windows服务</CheckBox>
-            <Label Content="服务名称:" HorizontalAlignment="Left" Margin="62,210,0,0" VerticalAlignment="Top" Height="25" Width="65" Grid.ColumnSpan="2"/>
-            <TextBox x:Name="serviceName" HorizontalAlignment="Left" Width="250" Height="30" Foreground="Black" VerticalContentAlignment="Center" Margin="16,206,0,227"                     
-                 pu:TextBoxHelper.Watermark="服务名称"
-                 pu:TextBoxHelper.FocusedBorderBrush="#00FFE2"
-                 pu:TextBoxHelper.FocusedShadowColor="#00FFE2"
-                 pu:TextBoxHelper.CornerRadius="6" Cursor="IBeam" Grid.Column="1">
-            </TextBox>
+            <CheckBox x:Name="winService" Margin="16,132,41,306" IsChecked="False" Grid.Column="1">Windows服务</CheckBox>
 
-            <Label Content="服务描述:" HorizontalAlignment="Left" Margin="62,244,0,0" VerticalAlignment="Top" Height="24" Width="66" Grid.ColumnSpan="2"/>
-            <TextBox x:Name="serviceDes" HorizontalAlignment="Left" Width="252" Height="30" Foreground="Black" VerticalContentAlignment="Center" Margin="17,241,0,192"                     
-                 pu:TextBoxHelper.Watermark="服务描述"
-                 pu:TextBoxHelper.FocusedBorderBrush="#00FFE2"
-                 pu:TextBoxHelper.FocusedShadowColor="#00FFE2"
-                 pu:TextBoxHelper.CornerRadius="6" Cursor="IBeam" Grid.Column="1">
-            </TextBox>
-
-            <CheckBox x:Name="IncludDepend" Margin="19,273,55,165" IsChecked="True" Grid.Column="1">是否包含离线Framework安装包</CheckBox>
-            <Label Content="Framework版本:" HorizontalAlignment="Left" Margin="27,300,0,0" VerticalAlignment="Top" Height="25" Width="103" Grid.ColumnSpan="2"/>
-            <TextBox x:Name="fwVersion" HorizontalAlignment="Left" Width="250" Height="30" Foreground="Black" VerticalContentAlignment="Center" Margin="19,298,0,135"                     
+            <CheckBox x:Name="IncludDepend" Margin="19,260,55,178" IsChecked="False" Grid.Column="1">是否包含离线Framework安装包</CheckBox>
+            <Label Content="Framework版本:" HorizontalAlignment="Left" Margin="27,294,0,0" VerticalAlignment="Top" Height="25" Width="103" Grid.ColumnSpan="2"/>
+            <TextBox x:Name="fwVersion" HorizontalAlignment="Left" Width="250" Height="30" Foreground="Black" VerticalContentAlignment="Center" Margin="19,292,0,141"                     
                      pu:TextBoxHelper.Watermark="4.7.2"
                      pu:TextBoxHelper.FocusedBorderBrush="#00FFE2"
                      pu:TextBoxHelper.FocusedShadowColor="#00FFE2"
